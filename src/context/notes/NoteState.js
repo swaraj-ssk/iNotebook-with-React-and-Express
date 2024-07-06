@@ -25,7 +25,6 @@ const NoteState = (props) => {
       }
       )
       const json = await response.json();
-      console.log(json);
       setNotes(json)
     } catch (error) {
       console.log("Error in app")
@@ -45,17 +44,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag })
     })
 
-    const json = await response.json();
-
-    const note = await {
-      "_id": json.id,
-      "user": json.user,
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "date": json.date,
-      "__v": json.__v
-    }
+    const note = await response.json();
     setNotes(notes.concat(note))
   }
 
@@ -69,8 +58,6 @@ const NoteState = (props) => {
       }
     });
     const json = response.json();
-    console.log(json);
-
     const newNotes = notes.filter((note) => { return note._id !== id });
     setNotes(newNotes);
   }
@@ -88,7 +75,6 @@ const NoteState = (props) => {
     })
 
     const json = await response.json();
-    console.log(json);
     //Logic to edit in client
     const newNotes = JSON.parse(JSON.stringify(notes))
     for (let index = 0; index < newNotes.length; index++) {

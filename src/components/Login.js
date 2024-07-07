@@ -32,8 +32,8 @@ const Login = () => {
         else{
             alert("Invalid credentials");
         }
-
     }
+    
     return (
         <div>
             <form onSubmit={handleSubmit}>

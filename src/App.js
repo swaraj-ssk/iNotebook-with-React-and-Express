@@ -11,24 +11,28 @@ import {
 } from "react-router-dom";
 import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
+import AlertState from './context/notes/AlertState';
+
 
 function App() {
   return (
     <>
-      <NoteState>
-        <BrowserRouter>
-          <Navbar />
-          <Alert message={"This is React app"}/>
-          <div className="container">
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/about" element={<About />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/signup" element={<Signup />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </NoteState>
+      <AlertState>
+        <NoteState>
+          <BrowserRouter>
+            <Navbar />
+            <Alert/>
+            <div className="container">
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/about" element={<About />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/signup" element={<Signup />} />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </NoteState>
+      </AlertState>
     </>
   );
 }

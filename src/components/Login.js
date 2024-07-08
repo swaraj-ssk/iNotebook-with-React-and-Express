@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import alertContext from '../context/notes/alertContext';
 
 const Login = () => {
+    const context = useContext(alertContext);
+    const{showAlert}= context;
 
     const [credentials, setCredentials] = useState({email:"", password:""});
 
@@ -27,15 +29,17 @@ const Login = () => {
         if(json.success){
             //Save auth token and redirect
             localStorage.setItem('token', json.authtoken);
+            showAlert("Logged in Successfully", "success");
             navigate("/");
         }
         else{
-            alert("Invalid credentials");
+            showAlert("Invalid credentials", "danger");
         }
     }
     
     return (
-        <div>
+        <div className='mt-3'>
+            <h2 className='my-2'>Login to continue to iNotebook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>

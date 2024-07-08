@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import alertContext from '../context/notes/alertContext';
 
 const Signup = () => {
+
+    const context = useContext(alertContext);
+    const{showAlert}= context;
 
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
 
@@ -30,18 +34,20 @@ const Signup = () => {
                 //Save auth token and redirect
                 localStorage.setItem('token', json.authtoken);
                 navigate("/");
+                showAlert("Account Created Successfully", "success");
             }
             else{
-                alert("Invalid credentials");
+                showAlert("Invalid credentials", "danger");
             }
         }
         else {
-            alert("Invalid credentials");
+            showAlert("Passwords do not match. Please re-enter your password and confirm password.", "danger");
         }
     }
 
     return (
-        <div className='container'>
+        <div className='containe mt-3'>
+            <h2 className='my-2'>Signup to iNotebook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Name</label>

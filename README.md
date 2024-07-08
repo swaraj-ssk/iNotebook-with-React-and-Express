@@ -26,17 +26,18 @@ No internet? No problem. iNotebook offers offline access, allowing you to create
 7. Security and Privacy
 We prioritize your privacy and data security. iNotebook employs advanced encryption and security measures to protect your notes and ensure your information remains confidential.
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `mongod --dbpath ~/data/db --logpath ~/data/log/mongodb/mongo.log --fork`
+### `mongosh`
+This to start MongoDB Compass.
 
-Runs the app in the development mode.\
+### `npm run both`
+
+Runs the app in the development mode and will start Mongo server and React App.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
